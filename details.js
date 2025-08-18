@@ -6,7 +6,7 @@ function onYouTubeIframeAPIReady() {
         });
     }
 }
-function onPlayerReady(event) { /* Player is ready */ }
+function onPlayerReady(event) { }
 function loadYouTubeAPI() {
     if (!window.YT) {
         const tag = document.createElement('script');
@@ -52,6 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function initDetailsPage(API_KEY) {
+        const loader = document.getElementById('page-loader');
+    
         const params = new URLSearchParams(window.location.search);
         const id = params.get("id");
         const type = params.get("type");
@@ -59,6 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!id || !type) {
             container.innerHTML = "<p style='color:red; text-align:center;'>Error: Content ID or type is missing.</p>";
+         
+            if (loader) loader.style.display = 'none';
+          
             return;
         }
 
@@ -88,8 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
             contentDiv.innerHTML = `
                 <h1 class="details-title">${title}</h1>
                 <div class="details-meta-badges">
-                    <span class="top-badge">IQIYI Only</span>
-                    <span class="meta-badge">VIP</span>
+                    <span class="top-badge">Original</span>
+                    <span class="meta-badge">Free</span>
                 </div>
                 <div class="details-meta-badges">
                     <span class="meta-badge star">★ ${rating}</span>
@@ -104,8 +109,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="details-description">${overview} <span id="desc-toggle">More</span></div>
                 <div class="details-actions">
                     <a href="/p/player.html?id=${id}&type=${type}&season=1&ep=1" class="btn-play">▶ Play</a>
-                    <button class="btn-secondary btn-bookmark">Watch Later</button>
-                    <button class="btn-secondary btn-share">Share</button>
+                    <button class="btn-secondary btn-bookmark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#7a7a7a" fill="none">
+    <path d="M3 17.9808V12.7075C3 9.07416 3 7.25748 4.09835 6.12874C5.1967 5 6.96447 5 10.5 5C14.0355 5 15.8033 5 16.9017 6.12874C18 7.25748 18 9.07416 18 12.7075V17.9808C18 20.2867 18 21.4396 17.2755 21.8523C15.8724 22.6514 13.2405 19.9852 11.9906 19.1824C11.2657 18.7168 10.9033 18.484 10.5 18.484C10.0967 18.484 9.73425 18.7168 9.00938 19.1824C7.7595 19.9852 5.12763 22.6514 3.72454 21.8523C3 21.4396 3 20.2867 3 17.9808Z" stroke="var(--text-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M9 2H11C15.714 2 18.0711 2 19.5355 3.46447C21 4.92893 21 7.28595 21 12V18" stroke="var(--text-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg> Watch Later</button>
+                    <button class="btn-secondary btn-share"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="var(--text-secondary)" fill="none">
+    <path d="M11.922 4.79004C16.6963 3.16245 19.0834 2.34866 20.3674 3.63261C21.6513 4.91656 20.8375 7.30371 19.21 12.078L18.1016 15.3292C16.8517 18.9958 16.2267 20.8291 15.1964 20.9808C14.9195 21.0216 14.6328 20.9971 14.3587 20.9091C13.3395 20.5819 12.8007 18.6489 11.7231 14.783C11.4841 13.9255 11.3646 13.4967 11.0924 13.1692C11.0134 13.0742 10.9258 12.9866 10.8308 12.9076C10.5033 12.6354 10.0745 12.5159 9.21705 12.2769C5.35111 11.1993 3.41814 10.6605 3.0909 9.64127C3.00292 9.36724 2.97837 9.08053 3.01916 8.80355C3.17088 7.77332 5.00419 7.14834 8.6708 5.89838L11.922 4.79004Z" stroke="var(--text-secondary)" stroke-width="1.5" />
+</svg>Share</button>
                 </div>
             `;
 
@@ -268,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const seasonData = await res.json();
                     grid.innerHTML = seasonData.episodes.map(ep => `
                         <a href="/p/player.html?id=${id}&type=tv&season=${seasonNum}&ep=${ep.episode_number}" class="episode-card">
-                            <div class="episode-thumb"><img src="${ep.still_path ? IMG_URL + 'w300' + ep.still_path : (details.poster_path ? IMG_URL + 'w300' + details.poster_path : 'https://i.imgur.com/YyHsyEr.png')}" alt="${ep.name}" loading="lazy"></div>
+                            <div class="episode-thumb"><img src="${ep.still_path ? IMG_URL + 'w300' + ep.still_path : (details.poster_path ? IMG_URL + 'w300' + details.poster_path : 'https://imgur.com/gG2Vb2x')}" alt="${ep.name}" loading="lazy"></div>
                             <div class="episode-title">${ep.episode_number}. ${ep.name}</div>
                         </a>
                     `).join('');
@@ -288,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             panel.innerHTML = `<div class="cast-grid">${credits.cast.slice(0, 18).map(person => `
                 <div class="cast-card">
-                    <img src="${person.profile_path ? IMG_URL + 'w185' + person.profile_path : 'https://i.imgur.com/YyHsyEr.png'}" alt="${person.name}" loading="lazy">
+                    <img src="${person.profile_path ? IMG_URL + 'w185' + person.profile_path : 'https://i.imgur.com/obaaZjk.png'}" alt="${person.name}" loading="lazy">
                     <div class="cast-name">${person.name}</div>
                     <div class="cast-character">${person.character}</div>
                 </div>`).join('')}</div>`;
@@ -362,10 +372,20 @@ document.addEventListener("DOMContentLoaded", () => {
             renderHeader(allDetails, allDetails.credits, allDetails.videos, allDetails.content_ratings || allDetails.release_dates);
             setupBodyWrapper();
             renderTabsAndPanels(allDetails, allDetails.credits, allDetails.videos, allDetails.recommendations);
+            
+
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 300);
+            }
+    
 
         } catch (error) {
             console.error("Failed to render details page:", error);
             container.innerHTML = `<p style='color:red; text-align:center; padding: 50px;'>Failed to load content. Please verify the content ID and API key.</p>`;
+  
+            if (loader) loader.style.display = 'none';
+          
         }
     }
     
