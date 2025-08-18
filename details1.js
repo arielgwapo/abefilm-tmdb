@@ -104,8 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="details-tags">
                     ${details.genres.map(g => `<span class="details-tag">${g.name}</span>`).join('')}
                 </div>
-               
-                <div class="details-credits"><strong>Cast:</strong> ${cast}</div>
                 <div class="details-description">${overview} <span id="desc-toggle">More</span></div>
                 <div class="details-actions">
                     <a href="/p/player.html?id=${id}&type=${type}&season=1&ep=1" class="btn-play">▶ Play</a>
