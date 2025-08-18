@@ -4,7 +4,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000",
-  "theme_color": "#05b550",
+  "theme_color": "#000",
   "description": "Discover, search, and stream a vast library of movies and TV shows. Your ultimate guide to what to watch next.",
   "icons": [
     {
