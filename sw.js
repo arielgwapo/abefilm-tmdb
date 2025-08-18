@@ -1,7 +1,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('https://cdn.jsdelivr.net/gh/YourUsername/my-blogger-pwa/sw.js')
+      navigator.serviceWorker.register('https://cdn.jsdelivr.net/gh/arielgwapo/iqiyi-tmdb/sw.js')
         .then(registration => {
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
         })
