@@ -8,13 +8,13 @@
   "description": "Discover, search, and stream a vast library of movies and TV shows. Your ultimate guide to what to watch next.",
   "icons": [
     {
-      "src": "https://cdn.jsdelivr.net/gh/arielgwapo/iqiyi-tmdb/images/icons/192x192.png",
+      "src": "https://cdn.jsdelivr.net/gh/arielgwapo/abefilm-tmdb/images/icons/192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://cdn.jsdelivr.net/gh/arielgwapo/iqiyi-tmdb/images/icons/con-512x512.png",
+      "src": "https://cdn.jsdelivr.net/gh/arielgwapo/abefilm-tmdb/images/icons/con-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -22,14 +22,14 @@
   ],
   "screenshots": [
     {
-      "src": "https://cdn.jsdelivr.net/gh/arielgwapo/iqiyi-tmdb/images/screenshots/screenshot-desktop.png",
+      "src": "https://cdn.jsdelivr.net/gh/arielgwapo/abefilm-tmdb/images/screenshots/screenshot-desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Explore Trending Movies & Shows"
     },
     {
-      "src": "https://cdn.jsdelivr.net/gh/arielgwapo/iqiyi-tmdb/images/screenshots/screenshot-mobile.png",
+      "src": "https://cdn.jsdelivr.net/gh/arielgwapo/abefilm-tmdb/images/screenshots/screenshot-mobile.png",
       "sizes": "720x1280",
       "type": "image/png",
       "form_factor": "narrow",
